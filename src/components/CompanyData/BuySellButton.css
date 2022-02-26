@@ -1,0 +1,31 @@
+.buy-button {
+    background-color: #00d09c;
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 12%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.7s;
+  }
+  
+  .buy-button:hover {
+    transform: scale(1.2);
+  }
+  
+  .sell-button {
+    border: 1px solid #00d09c;
+    color: #00d09c;
+    background-color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 12%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.7s;
+  }
+  
+  .sell-button:hover {
+    transform: scale(1.2);
+  }

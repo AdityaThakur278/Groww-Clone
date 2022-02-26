@@ -1,0 +1,59 @@
+.company-data {
+  width: 33%;
+  margin-left: 2%;
+}
+
+/* Top by Market Cap - NIFTY-50 */
+.company-data .heading {
+  padding: 4% 0;
+  display: flex;
+  justify-content: start;
+}
+.top-heading {
+  font-weight: 400;
+  font-size: 2rem;
+  padding-right: 1%;
+}
+.nifty {
+  color: gray;
+  padding-top: 2%;
+}
+
+/* Table */
+.company-data .table {
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+}
+
+.company-data .table-heading {
+  display: flex;
+  flex-direction: row;
+  background-color: #e6e6e6;
+  font-size: 14px;
+  color: #44475b;
+  width: 100%;
+}
+
+.company-data .company {
+  display: flex;
+  align-items: center;
+  width: 43%;
+  padding: 2% 1.5%;
+  padding-left: 3%;
+}
+
+.company-data .market-price {
+  width: 27%;
+  padding: 2% 1.5%;
+}
+
+.company-data .buy {
+  width: 15%;
+  padding: 2% 1.5%;
+  text-align: center;
+}
+
+.company-data .sell {
+  width: 15%;
+  padding: 2% 1.5%;
+  text-align: center;
+}
