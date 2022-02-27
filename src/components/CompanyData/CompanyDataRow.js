@@ -12,7 +12,6 @@ function priceChangeStyle(value) {
 }
 
 function CompanyDataRow(props) {
-
     const priceChangeStyleValue = priceChangeStyle(props.percentageChange);
 
     return (
@@ -25,8 +24,8 @@ function CompanyDataRow(props) {
             </div>
 
             {/* Pass onclick methods from props*/}
-            <BuySellButton type="buy" company={props.company}/> 
-            <BuySellButton type="sell" company={props.company}/>
+            <BuySellButton type="buy" company={props.company} buySelect={props.buySelect}/> 
+            <BuySellButton type="sell" company={props.company} sellSelect={props.sellSelect}/>
         </div>
     );
 }

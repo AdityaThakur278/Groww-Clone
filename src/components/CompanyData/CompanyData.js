@@ -3,8 +3,9 @@ import React from "react";
 import CompanyDataRow from "./CompanyDataRow"
 import "./CompanyData.css"
 
-function CompanyData() 
-{
+function CompanyData(props) {
+    const data = props.data;
+
     return (
         <div className="company-data">
             <div className="heading">
@@ -20,7 +21,26 @@ function CompanyData()
                     <p className="sell">Sell</p>
                 </div>
 
-                <CompanyDataRow company={"TATAMOTORS"} ltp={"460.85"} ptsChange={"31.80"} percentageChange={"7.55"}/>
+                <div className="table-content">
+                {
+                    props.loading 
+                    ?   (<div className="loading">
+                            Loading...
+                        </div>)
+                    :   data.map(obj => {
+                            return <CompanyDataRow
+                                        key={obj.company} 
+                                        company={obj.company} 
+                                        ltp={obj.ltp} 
+                                        ptsChange={obj.ptsChange} 
+                                        percentageChange={obj.percentageChange}
+                                        buySelect = {props.buySelect}
+                                        sellSelect = {props.sellSelect}
+                                    />
+                        })  
+                }
+                </div>
+
             </div>
 		</div>
     );

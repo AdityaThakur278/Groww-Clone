@@ -1,0 +1,60 @@
+.transaction-table {
+  box-shadow: 1px 1px 3px 3px #e6e6e6;
+  margin-bottom: 4%;
+}
+
+.transaction .heading {
+  display: flex;
+  flex-direction: row;
+  padding: 3%;
+}
+
+.transaction .heading-name {
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-right: 2%;
+}
+
+.transaction .table-heading {
+  display: flex;
+  flex-direction: row;
+  background-color: #e6e6e6;
+  font-size: 14px;
+  color: #44475b;
+  width: 100%;
+}
+
+.transaction-type {
+  width: 10%;
+  padding: 2% 1.5%;
+  text-align: center;
+}
+
+.company-name,
+.target-price,
+.quantity,
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-name {
+  width: 32%;
+  padding: 2% 1.5%;
+}
+
+.target-price {
+  width: 23%;
+  padding: 2% 1.5%;
+}
+
+.quantity {
+  width: 13%;
+  padding: 2% 1.5%;
+}
+
+.total {
+  width: 22%;
+  padding: 2% 1.5%;
+}

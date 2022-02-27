@@ -1,0 +1,28 @@
+.transaction .company-row {
+    display: flex;
+  flex-direction: row;
+  font-size: 15px;
+}
+
+.transaction .company-row:hover {
+    background-color: #e5faf5;
+}
+
+.transaction-type-buy,
+.transaction-type-sell {
+  width: 10%;
+  padding: 2% 1.5%;
+  text-align: center;
+}
+
+.transaction-type-buy {
+  color: #00d09c;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.transaction-type-sell {
+  color: red;
+  font-weight: 700;
+  font-size: 1.1rem;
+}

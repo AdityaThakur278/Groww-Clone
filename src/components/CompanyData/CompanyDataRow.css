@@ -4,6 +4,10 @@
   font-size: 15px;
 }
 
+.company-row:hover {
+    background-color: #e5faf5;
+}
+
 .change-pos {
   padding-top: 1%;
   font-size: 13px;
