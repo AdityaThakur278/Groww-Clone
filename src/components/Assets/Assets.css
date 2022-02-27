@@ -1,0 +1,22 @@
+.asset {
+    margin-top: 6%;
+    box-shadow: 1px 1px 3px 3px #e6e6e6;
+    Overflow-y: scroll;
+    flex: 1 1 auto;
+  }
+  
+  .asset::-webkit-scrollbar {
+    width: 0.43rem;
+  }
+  
+  .asset::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .asset::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  .asset::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }

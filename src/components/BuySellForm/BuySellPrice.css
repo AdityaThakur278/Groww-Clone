@@ -1,0 +1,19 @@
+.buy-sell-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6%;
+    padding-top: 0;
+    padding-bottom: 4%;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  
+  .buy-sell-price-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  .buy-sell-market-price {
+    font-size: 1.5rem;
+  }

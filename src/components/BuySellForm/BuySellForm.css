@@ -1,0 +1,54 @@
+.buy-sell-form {
+    color: #44475b;
+    flex: 0 1 auto;
+  }
+
+  .buy-sell-form .company-name {
+    background-color: #e5faf5;
+    padding: 4%;
+    width: auto;
+    text-align: center;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  .buy-sell-sub-container {
+    box-shadow: 1px 1px 3px 3px #e6e6e6;
+  }
+  
+  .buy-sell-tab {
+    display: flex;
+    flex-direction: row;
+    margin-left: 4%;
+  }
+  
+  .buy-sell-tab-item {
+    padding: 6%;
+    padding-bottom: 2.5%;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  
+  .selected {
+    color: #00d09c;
+    border-bottom: 5px solid #00d09c;
+  }
+  
+  .units-owned {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    margin-right: 7%;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .buy-sell-info {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #7c7e8c;
+    /* margin-top: 6%; */
+  }

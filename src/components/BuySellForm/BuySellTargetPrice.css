@@ -1,0 +1,27 @@
+.buy-sell-target-price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6%;
+    padding-top: 0;
+    padding-bottom: 4%;
+    font-weight: 700;
+  }
+
+.target-price-input {
+  border: none;
+  background-color: #e5faf5;
+  height: 2.2rem;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  width: 35%;
+  color: #00d09c;
+  font-weight: 700;
+  text-align: end;
+  padding-right: 2%;
+}
+
+.target-price-input:focus {
+  outline: none;
+}
+

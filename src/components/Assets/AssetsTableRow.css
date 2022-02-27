@@ -1,0 +1,9 @@
+.asset .table-row {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+}
+
+.asset .table-row:hover {
+    background-color: #e5faf5;
+}

@@ -1,0 +1,34 @@
+.asset .table-heading {
+    display: flex;
+    flex-direction: row;
+    background-color: #e6e6e6;
+    font-size: 14px;
+    color: #44475b;
+    width: 100%;
+}
+
+.asset .average-price, .asset .quantity, .asset .total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3% 0;
+}
+
+.asset .company-name {
+    display: block;
+    padding: 3% 0;
+    padding-left: 4%;
+    width: 35%;
+}
+
+.asset .average-price {
+    width: 24%;
+}
+
+.asset .quantity {
+    width: 11%;
+}   
+
+.asset .total {
+    width: 30%;
+}

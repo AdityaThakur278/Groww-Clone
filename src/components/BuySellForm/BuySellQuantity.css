@@ -1,0 +1,29 @@
+.buy-sell-quantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4% 6%;
+    font-weight: 700;
+  }
+  
+  .quantity-label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-input {
+    border: none;
+    background-color: #e5faf5;
+    height: 2.2rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    width: 35%;
+    color: #00d09c;
+    font-weight: 700;
+    text-align: end;
+    padding-right: 2%;
+  }
+  
+  .quantity-input:focus {
+    outline: none;
+  }

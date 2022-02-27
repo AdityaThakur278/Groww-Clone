@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import CompanyData from "./components/CompanyData/CompanyData";
 import Transaction from "./components/Transaction/Transaction";
+import BuySellForm from "./components/BuySellForm/BuySellForm";
 import "./App.css"
+import Assets from "./components/Assets/Assets";
 
 function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [pendingTransaction, setPendingTransaction] = useState([]);
-  const [completeTransaction, setCompleteTransaction] = useState([]);
+  // const [pendingTransaction, setPendingTransaction] = useState([]);
+  // const [completeTransaction, setCompleteTransaction] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -43,6 +45,10 @@ function App() {
           sellSelect={sellSelect}
         />
         <Transaction/>
+		<div className="third-column">
+			<BuySellForm/>
+			<Assets/>
+		</div>
       </div>
     </div>
   );
