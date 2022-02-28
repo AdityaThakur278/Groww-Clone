@@ -6,26 +6,45 @@ import BuySellPrice from "./BuySellPrice";
 import BuySellTransaction from "./BuySellTransaction";
 import "./BuySellForm.css";
 
-function BuySellForm() {
+function BuySellForm(props) {
+    const buyTab = props.buyTab ? "selected" : "";
+    const sellTab = props.buyTab ? "" : "selected";
+
+    function buyTabSelect() {
+        props.setBuyTab(true);
+    }
+
+    function sellTabSelect() {
+        props.setBuyTab(false);
+    }
+
     return (
         <div className="buy-sell-form">
-            <div className="company-name">Loading...</div>
+            <div className="company-name">{props.company}</div>
 
             <div className="buy-sell-sub-container">
-                <div className="buy-sell-tab"> 
+                <div className="buy-sell-tab">
                     {/* Add onClick events */}
-                    <p className="buy-sell-tab-item selected">BUY</p> 
-                    <p className="buy-sell-tab-item">SELL</p>
+                    <p className={"buy-sell-tab-item " + buyTab} onClick={buyTabSelect}>BUY</p>
+                    <p className={"buy-sell-tab-item " + sellTab} onClick={sellTabSelect}>SELL</p>
                     <p className="units-owned">Shares Owned - 0</p>
                 </div>
 
-                <BuySellQuantity/>
-                <BuySellTargetPrice/>
-                <BuySellPrice/>
+                <BuySellQuantity 
+                    shareQuantityValue={props.shareQuantityValue}
+                    setShareQuantityValue={props.setShareQuantityValue}
+                />
+                <BuySellTargetPrice 
+                    targetPrice={props.targetPrice}
+                    setTargetPrice={props.setTargetPrice}
+                />
+                <BuySellPrice marketPriceValue={props.marketPriceValue} />
 
-                <p className="buy-sell-info">Order will expire when market closes today</p>
+                <p className="buy-sell-info">
+                    Order will expire when market closes today
+                </p>
 
-                <BuySellTransaction/>
+                <BuySellTransaction buyTab={props.buyTab} />
             </div>
         </div>
     );

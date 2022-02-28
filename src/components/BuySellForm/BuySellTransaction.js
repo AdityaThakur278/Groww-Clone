@@ -2,9 +2,12 @@ import React from "react";
 
 import "./BuySellTransaction.css"
 
-function BuySellTransaction() {
+function BuySellTransaction(props) {
+
+    const buttonStyle = props.buyTab ? "buy-style" : "sell-style";
+
     return (
-        <button className="buy-sell-button buy-style">BUY</button>
+        <button className={"buy-sell-button " + buttonStyle}>BUY</button>
     );
 }
 
