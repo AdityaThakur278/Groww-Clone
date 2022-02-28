@@ -24,10 +24,9 @@ function BuySellForm(props) {
 
             <div className="buy-sell-sub-container">
                 <div className="buy-sell-tab">
-                    {/* Add onClick events */}
                     <p className={"buy-sell-tab-item " + buyTab} onClick={buyTabSelect}>BUY</p>
                     <p className={"buy-sell-tab-item " + sellTab} onClick={sellTabSelect}>SELL</p>
-                    <p className="units-owned">Shares Owned - 0</p>
+                    <p className="units-owned">Shares Owned - {props.sharesOwned}</p>
                 </div>
 
                 <BuySellQuantity 

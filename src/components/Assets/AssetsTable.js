@@ -3,7 +3,10 @@ import React from "react";
 import AssetsTableRow from "./AssetsTableRow";
 import "./AssetsTable.css"
 
-function AssetsTable() {
+function AssetsTable(props) {
+
+    const assetsList = props.assetsList;
+
     return (
         <div className="table">
             <div className="table-heading">
@@ -13,7 +16,23 @@ function AssetsTable() {
                 <p className="total">Total</p>
             </div>
 
-            <AssetsTableRow/>
+            {
+                assetsList.map(asset => {
+                    return  <AssetsTableRow 
+                                key={asset.company}
+                                company={asset.company}
+                                price={asset.price}
+                                quantity={asset.quantity}
+                                total={asset.total}
+                                data={props.data}
+				                mapCompany={props.mapCompany}
+                                setBuySellCompany={props.setBuySellCompany}
+                                setBuyTab={props.setBuyTab}
+                                handleSharesOwned={props.handleSharesOwned}
+                                setMarketPriceValue={props.setMarketPriceValue}
+                            />
+                })
+            }
         </div>
     );
 }

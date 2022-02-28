@@ -16,6 +16,8 @@ function App() {
 	const [mapCompany, setMapCompany] = useState({});
 	const [shareQuantityValue, setShareQuantityValue] = useState(0);
 	const [targetPrice, setTargetPrice] = useState("0.0");
+	const [assetsList, setAssetsList] = useState([]);
+	const [sharesOwned, setSharesOwned] = useState(0);
 
 	function mapCompanyToIndex(data) {
 		const mapObj = {};
@@ -43,7 +45,7 @@ function App() {
 
 		setInterval(() => {
 			mockAPI();
-		}, 3000);
+		}, 5000);
 
 	}, []);
 
@@ -56,6 +58,7 @@ function App() {
 		const index = mapCompany[company];
 		const marketPrice = data[index].ltp;
 		setMarketPriceValue(marketPrice);
+		handleSharesOwned(company);
 	}
 
 	function sellSelect(event) {
@@ -67,6 +70,17 @@ function App() {
 		const index = mapCompany[company];
 		const marketPrice = data[index].ltp;
 		setMarketPriceValue(marketPrice);
+		handleSharesOwned(company);
+	}
+
+	function handleSharesOwned(company) {
+		let quantity = 0;
+		assetsList.forEach(function(asset) {
+			if(asset.company === company) {
+				quantity = asset.quantity;
+			}
+		});
+		setSharesOwned(quantity);
 	}
 
 	// Add to pending list
@@ -84,10 +98,56 @@ function App() {
 		setPendingTransaction(prev => [transactionDetail , ...prev])
 	}
 
-	function pendingTransactionSuccessful(index) {
-		// Add to complete transaction
+	function addToAssets(company, targetPrice, quantity, total) {
+		const shallowCopyAssetList = [...assetsList];
+		let searchIndex = undefined;
 
+		shallowCopyAssetList.forEach(function(obj, i) {
+			if(obj.company === company) {
+				searchIndex = i;
+			}
+		});
+
+		let totalShares;
+		if(searchIndex === undefined) {
+			const assetDetail = {
+				company,
+				price : targetPrice,
+				quantity,
+				total
+			}
+			setAssetsList(prev => [assetDetail, ...prev]);
+			totalShares = quantity;
+		}
+		else {
+			const assetRow = {...shallowCopyAssetList[searchIndex]};
+			assetRow.quantity = (parseFloat(assetRow.quantity) + parseFloat(quantity));
+			assetRow.total = (parseFloat(assetRow.total) + parseFloat(total)).toFixed(2);
+			assetRow.price = (parseFloat(assetRow.total) / parseFloat(assetRow.quantity)).toFixed(2);
+			shallowCopyAssetList[searchIndex] = assetRow;
+			setAssetsList(shallowCopyAssetList);
+			totalShares = assetRow.quantity;
+		}
+
+		// To change Shares Owned Value transaction is successful
+		if(buySellCompany === company) {
+			setSharesOwned(totalShares);
+		}
+	}
+
+	function buyTransactionSuccessful(index, company, targetPrice, quantity, total) {
+		// Add to complete transaction
+		const transactionDetail = {
+			type: "B",
+			company,
+			price: targetPrice,
+			quantity,
+			total,
+		};
+		setCompleteTransaction(prev => [transactionDetail , ...prev]);
+	
 		// Add to assests
+		addToAssets(company, targetPrice, quantity, total);
 
 		// remove from pending transaction 
 		setPendingTransaction(prev => {
@@ -98,13 +158,17 @@ function App() {
 	function checkPendingTransaction() {
 		// check if successful
 		for(let i=pendingTransaction.length-1; i>=0; i--) {
+			const type = pendingTransaction[i].type;
 			const company = pendingTransaction[i].company;
+			const targetPrice = parseFloat(pendingTransaction[i].price);
+			const quantity = pendingTransaction[i].quantity;
+			const total = pendingTransaction[i].total;
+
 			const index = mapCompany[company];
 			const currentPrice = parseFloat(data[index].ltp);
-			const targetPrice = parseFloat(pendingTransaction[i].price);
 
-			if(targetPrice >= currentPrice) {
-				pendingTransactionSuccessful(i);
+			if(targetPrice >= currentPrice && type === "B") {
+				buyTransactionSuccessful(i, company, targetPrice, quantity, total);
 			}
 		}
 	}
@@ -137,8 +201,17 @@ function App() {
 						targetPrice={targetPrice}
 						setTargetPrice={setTargetPrice}
 						buySellTransaction={buySellTransaction}
+						sharesOwned={sharesOwned}
 					/>
-					<Assets />
+					<Assets 
+						assetsList={assetsList}
+						setBuySellCompany={setBuySellCompany}
+						setBuyTab={setBuyTab}
+						handleSharesOwned={handleSharesOwned}
+						data={data}
+						mapCompany={mapCompany}
+						setMarketPriceValue={setMarketPriceValue}
+					/>
 				</div>
 			</div>
 		</div>
