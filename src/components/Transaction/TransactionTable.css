@@ -58,3 +58,10 @@
   width: 22%;
   padding: 2% 1.5%;
 }
+
+.transaction .no-transaction {
+  padding: 4%;
+  text-align: center;
+  color: #7c7e8c;
+  font-weight: 700;
+}

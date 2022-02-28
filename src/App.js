@@ -9,7 +9,7 @@ function App() {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [pendingTransaction, setPendingTransaction] = useState([]);
-	// const [completeTransaction, setCompleteTransaction] = useState([]);
+	const [completeTransaction, setCompleteTransaction] = useState([]);
 	const [buySellCompany, setBuySellCompany] = useState("Loading...")
 	const [buyTab, setBuyTab] = useState(true);
 	const [marketPriceValue, setMarketPriceValue] = useState(null);
@@ -44,6 +44,7 @@ function App() {
 		setInterval(() => {
 			mockAPI();
 		}, 3000);
+
 	}, []);
 
 	function buySelect(event) {
@@ -68,6 +69,50 @@ function App() {
 		setMarketPriceValue(marketPrice);
 	}
 
+	// Add to pending list
+	function buySellTransaction(type) {
+		if(buySellCompany === "Loading...") return;
+
+		const transactionDetail = {
+			type,
+			company: buySellCompany,
+			price: targetPrice,
+			quantity: shareQuantityValue,
+			total: (parseFloat(targetPrice) * parseFloat(shareQuantityValue)).toFixed(2),
+		};
+
+		setPendingTransaction(prev => [transactionDetail , ...prev])
+	}
+
+	function pendingTransactionSuccessful(index) {
+		// Add to complete transaction
+
+		// Add to assests
+
+		// remove from pending transaction 
+		setPendingTransaction(prev => {
+			return prev.filter((_, i) =>  index !== i)
+		})
+	}
+
+	function checkPendingTransaction() {
+		// check if successful
+		for(let i=pendingTransaction.length-1; i>=0; i--) {
+			const company = pendingTransaction[i].company;
+			const index = mapCompany[company];
+			const currentPrice = parseFloat(data[index].ltp);
+			const targetPrice = parseFloat(pendingTransaction[i].price);
+
+			if(targetPrice >= currentPrice) {
+				pendingTransactionSuccessful(i);
+			}
+		}
+	}
+
+	useEffect(() => {
+		checkPendingTransaction();
+	}, [data]);
+
 	return (
 		<div className="main-constainer">
 			<div className="sub-container">
@@ -79,7 +124,7 @@ function App() {
 				/>
 				<Transaction 
 					pendingTransaction={pendingTransaction}
-					setPendingTransaction={setPendingTransaction}
+					completeTransaction={completeTransaction}
 				/>
 				<div className="third-column">
 					<BuySellForm
@@ -91,6 +136,7 @@ function App() {
 						setShareQuantityValue={setShareQuantityValue}
 						targetPrice={targetPrice}
 						setTargetPrice={setTargetPrice}
+						buySellTransaction={buySellTransaction}
 					/>
 					<Assets />
 				</div>

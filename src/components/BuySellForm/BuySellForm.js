@@ -44,7 +44,10 @@ function BuySellForm(props) {
                     Order will expire when market closes today
                 </p>
 
-                <BuySellTransaction buyTab={props.buyTab} />
+                <BuySellTransaction 
+                    buyTab={props.buyTab} 
+                    buySellTransaction = {props.buySellTransaction}
+                />
             </div>
         </div>
     );

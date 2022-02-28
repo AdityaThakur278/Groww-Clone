@@ -12,10 +12,10 @@ function TransactionRow(props) {
     return (
         <div className="company-row">
             <p className={transactionTypeStyle()}>{props.type}</p>
-            <p className="company-name">HDFC Bank</p>
-            <p className="target-price">805.05</p>
-            <p className="quantity">15</p>
-            <p className="total">12075.75</p>
+            <p className="company-name">{props.company}</p>
+            <p className="target-price">{props.price}</p>
+            <p className="quantity">{props.quantity}</p>
+            <p className="total">{props.total}</p>
         </div>
     );
 }

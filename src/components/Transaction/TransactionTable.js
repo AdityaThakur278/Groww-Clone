@@ -4,6 +4,10 @@ import TransactionRow from "./TransactionRow";
 import "./TransactionTable.css"
 
 function TransactionTable(props) {
+
+    const transactionArray = props.transactionArray;
+    let transactionID = 0;
+
     return (
         <div className="transaction-table">
             <div className="heading">
@@ -19,15 +23,26 @@ function TransactionTable(props) {
                     <p className="total">Total</p>
                 </div>
 
-                {/* Handle no transaction case */}
-
-                <TransactionRow
-                    type="B"
-                    company="HDFC"
-                    price="2331.30"
-                    quantity="8"
-                    total="2000"
-                />
+                {
+                    transactionArray.length === 0 
+                    ? (
+                        <div className="no-transaction">
+							No Transactions
+						</div>
+                    ) 
+                    : (
+                        transactionArray.map(obj => {
+                            return <TransactionRow 
+                                        key={transactionID++}
+                                        type={obj.type}
+                                        company={obj.company}
+                                        price={obj.price}
+                                        quantity={obj.quantity}
+                                        total={obj.total}
+                                    />
+                        })
+                    ) 
+                }
             </div>
         </div>
     );

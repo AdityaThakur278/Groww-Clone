@@ -5,8 +5,14 @@ import "./Transaction.css"
 function Transaction(props) {
     return (
         <div className="transaction">
-            <TransactionTable type="Pending"/>
-            <TransactionTable type="Completed"/>
+            <TransactionTable 
+                type="Pending" 
+                transactionArray={props.pendingTransaction}
+            />
+            <TransactionTable 
+                type="Completed" 
+                transactionArray={props.completeTransaction}
+            />
         </div>
     );
 }
