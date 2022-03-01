@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Groww-Clone/static/css/main.2c7b1df8.css",
+    "main.js": "/Groww-Clone/static/js/main.caadc952.js",
+    "index.html": "/Groww-Clone/index.html",
+    "main.2c7b1df8.css.map": "/Groww-Clone/static/css/main.2c7b1df8.css.map",
+    "main.caadc952.js.map": "/Groww-Clone/static/js/main.caadc952.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c7b1df8.css",
+    "static/js/main.caadc952.js"
+  ]
+}
