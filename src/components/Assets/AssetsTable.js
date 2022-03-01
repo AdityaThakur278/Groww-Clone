@@ -17,7 +17,11 @@ function AssetsTable(props) {
             </div>
 
             {
-                assetsList.map(asset => {
+                assetsList.length === 0 
+                ? <div className="no-asset">
+                        No Assets
+                  </div>
+                : assetsList.map(asset => {
                     return  <AssetsTableRow 
                                 key={asset.company}
                                 company={asset.company}

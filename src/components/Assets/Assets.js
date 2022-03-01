@@ -7,7 +7,9 @@ import "./Assets.css"
 function Assets(props) {
     return (
         <div className="asset">
-            <AssetsHeading/>
+            <AssetsHeading
+                totalInvestment={props.totalInvestment}
+            />
             <AssetsTable 
                 assetsList={props.assetsList}
                 setBuySellCompany={props.setBuySellCompany}

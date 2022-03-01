@@ -32,3 +32,10 @@
 .asset .total {
     width: 30%;
 }
+
+.asset .no-asset {
+    padding: 4%;
+    text-align: center;
+    color: #7c7e8c;
+    font-weight: 700;
+  }
