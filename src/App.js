@@ -32,6 +32,7 @@ function App() {
 		setLoading(true);
 
 		const mockAPI = async () => {
+			
 			const response = await fetch("mock/indiaStock.json");
 			const res = await response.json();
 
